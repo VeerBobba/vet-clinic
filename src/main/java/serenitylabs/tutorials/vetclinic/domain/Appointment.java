@@ -55,14 +55,14 @@ public class Appointment {
             this.owner = owner;
             return this;
         }
-
-        public Appointment at(LocalDateTime appointmentTime) {
-            return new Appointment(petName, owner, appointmentTime,reason);
-        }
-
         public AppointmentBooker because(String reason) {
             this.reason = reason;
             return this;
         }
+        public Appointment at(LocalDateTime appointmentTime) {
+            return new Appointment(petName, owner, appointmentTime,reason);
+        }
+
+
     }
 }
