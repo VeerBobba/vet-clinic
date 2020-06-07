@@ -51,6 +51,14 @@ public class WhenToldToPlayBall {
     }
 
     @Test
+    public void child_should_play_icehockey_if_asked(){
+        Child bill = new Child();
+        bill.goPlay(Ice_hockey);
+
+        assertThat(output.toString(),equalTo("Slid the ball"));
+    }
+
+    @Test
     public void child_should_play_handball_if_asked() {
 
         Child bill = new Child();
