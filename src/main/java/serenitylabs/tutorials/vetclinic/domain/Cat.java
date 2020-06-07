@@ -2,13 +2,15 @@ package serenitylabs.tutorials.vetclinic.domain;
 
 import com.google.common.collect.ImmutableList;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cat extends Animal{
+public class Cat extends Animal implements NeedsVaccinations{
     private final String name;
     private final String breed;
     private final List<String> colour;
+    private LocalDate vaccinationDate;
 
     public Cat(String name, String breed, List<String> colour) {
 
@@ -41,6 +43,14 @@ public class Cat extends Animal{
     @Override
     public String complaint() {
         return "Meow...";
+    }
+
+    public void wasVaccinatedOn(LocalDate vaccinationDate) {
+        this.vaccinationDate = vaccinationDate;
+    }
+
+    public LocalDate nextVaccinationDate() {
+        return vaccinationDate.plusYears(1);
     }
 
     public static class CatBuilder {

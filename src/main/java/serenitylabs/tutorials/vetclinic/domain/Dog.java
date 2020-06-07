@@ -4,13 +4,15 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import org.hamcrest.generator.qdox.model.annotation.AnnotationUnaryOperator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dog extends Animal {
+public class Dog extends Animal implements NeedsVaccinations {
     private final String name;
     private final String breed;
     private final List<String> colour;
+    private LocalDate vaccinatedDate;
 
     public Dog(String name, String breed, List<String> colour) {
 
@@ -42,6 +44,16 @@ public class Dog extends Animal {
 
     public String complaint() {
         return "Bark...";
+    }
+
+    @Override
+    public void wasVaccinatedOn(LocalDate vaccinatedDate) {
+        this.vaccinatedDate = vaccinatedDate;
+    }
+
+    @Override
+    public LocalDate nextVaccinationDate() {
+        return vaccinatedDate.plusMonths(6);
     }
 
     public static class DogBuilder {
